@@ -18,7 +18,7 @@
     </form>
     
     <div id="result" style="margin-top: 20px;">
-        <label for="fullImageUrl" style="display: none;">Full image URL:</label>
+        <label for="fullImageUrl" style="display: none;">Full image URL &rarr;</label>
         <a href="#" id="fullImageUrl" target="_blank"></a>
     </div>
 
@@ -48,6 +48,7 @@
             const resultLink = document.getElementById("fullImageUrl");
             
             resultLabel.style.display = "inline";  // Show the label
+            resultLabel.style.color = "red";
             resultLink.href = fullImageUrl;        // Set the href for the link
             resultLink.textContent = fullImageUrl; // Set the text content of the link
         }

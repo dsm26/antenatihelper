@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antentati Image URL Builder</title>
+</head>
+<body>
+    <h1>Antentati Image URL Builder</h1>
+    
+    <form id="urlForm">
+        <label for="urlInput">Paste URL here:</label><br>
+        <input type="text" id="urlInput" placeholder="Enter Antenati URL here" style="width: 90%; padding: 8px;"><br>
+        <small>Example: https://antenati.cultura.gov.it/ark:/12657/an_ua253675/0nNM9yq</small><br><br>
+        <button type="button" onclick="generateImageUrl()">Get full image URL</button>
+    </form>
+    
+    <div id="result" style="margin-top: 20px;">
+        <label for="fullImageUrl" style="display: none;">Full image URL:</label>
+        <a href="#" id="fullImageUrl" target="_blank"></a>
+    </div>
+
+    <script>
+        function generateImageUrl() {
+            // Get the URL from the input field
+            const inputUrl = document.getElementById("urlInput").value;
+            
+            // Extract the last part of the URL after the last "/"
+            const urlParts = inputUrl.split('/');
+            const imageId = urlParts[urlParts.length - 1];
+            
+            // Build the full image URL
+            const fullImageUrl = "https://iiif-antenati.san.beniculturali.it"
+                  + "/iiif/2/"
+                  + imageId
+                  + "/full/full/0/default.jpg"
+                  ;
+
+            // Display the result
+            const resultLabel = document.querySelector("#result label");
+            const resultLink = document.getElementById("fullImageUrl");
+            
+            resultLabel.style.display = "inline";  // Show the label
+            resultLink.href = fullImageUrl;        // Set the href for the link
+            resultLink.textContent = fullImageUrl; // Set the text content of the link
+        }
+    </script>
+</body>
+</html>
